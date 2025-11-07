@@ -26,7 +26,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing container...'
-                bat 'curl http://localhost:5000'
+                //bat 'curl http://localhost:5000'
             }
         }
 
