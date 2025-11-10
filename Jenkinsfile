@@ -26,21 +26,24 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing container...'
-                //bat 'curl http://localhost:5000'
+                bat 'curl http://localhost:5000'
             }
         }
 
         stage('Cleanup') {
             steps {
                 echo 'Cleaning up...'
-                bat 'docker stop flask-container && docker rm flask-container'
+                bat '''
+                docker stop flask-container
+                docker rm flask-container
+                '''
             }
         }
     }
 
     post {
         always {
-            echo 'CI/CD Pipeline Completed'
+            echo '✅ CI/CD Pipeline Completed Successfully!'
         }
     }
 }
