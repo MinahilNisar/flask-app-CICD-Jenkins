@@ -17,11 +17,13 @@ pipeline {
         }
 
         stage('Setup Python') {
-            steps {
-                sh 'python -m venv venv'
-                sh './venv/bin/pip install --upgrade pip'
-                sh './venv/bin/pip install -r requirements.txt'
-            }
+    steps {
+        bat 'python -m venv venv'
+        bat 'venv\\Scripts\\pip install --upgrade pip'
+        bat 'venv\\Scripts\\pip install -r requirements.txt'
+    }
+}
+
         }
 
         stage('Build Docker Image') {
